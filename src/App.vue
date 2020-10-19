@@ -1,17 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="nav">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <Nav />
+    
+    <router-view/>
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import Nav from './components/Nav.vue';
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    Nav
   }
 }
+
 </script>
 
 <style>
@@ -21,6 +26,23 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+  
+}
+
+#nav a {
+  font-weight: bold;
+  color: white;
+}
+
+#login {
+    padding: 100px;
+}
+
+#nav a.router-link-exact-active {
+  color: whitesmoke;
 }
 </style>
