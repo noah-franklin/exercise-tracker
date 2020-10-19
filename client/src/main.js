@@ -1,5 +1,21 @@
 import { createApp } from 'vue'
+import { createStore } from 'vuex'
 import App from './App.vue'
 import router from './router'
 
-createApp(App).use(router).mount('#app')
+const store = createStore({
+    state () {
+      return {
+        users: {
+            username: 'admin',
+            password: 'password',
+            }
+        }
+        
+      
+      }
+    })
+
+
+createApp(App).use(router).use(store).mount('#app')
+

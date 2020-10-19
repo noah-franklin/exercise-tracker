@@ -12,9 +12,14 @@
 
 import Nav from './components/Nav.vue';
 export default {
+
+  data() {
+    return {authenticated: false}
+  },
   components: {
     Nav
   }
+
 }
 
 </script>

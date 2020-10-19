@@ -4,9 +4,10 @@
 
 <script>
 export default {
-    users: [ { user: "admin", passwd:"password"} ],
+    data() {
+       
+    }
     
-    template:<h4>{{username }}</h4>
     
 }
 </script>

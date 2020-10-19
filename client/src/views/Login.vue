@@ -39,6 +39,7 @@
     </button>
   </p>
   </div>
+  <p id="success" v-if="$authenticated">Login Successful</p>
   </div>
   
 
@@ -47,15 +48,24 @@
 </template>
 
 <script>
-import Users from './model/Users.vue';
-console.log(username);
+
+
 export default {
-    
+ 
   methods: {
+      
       login() {
-          <Users username="username" password="password"></ Users>
+       console.log(this.$store.state.users.username)
+       console.log(this.$store.state.users.password)
+       const { username, password } = this
+        if (username == this.$store.state.users.username && password == this.$store.state.users.password)
+         // console.log(this.authenticated)
+         
+          console.log('SUCCESS')
+          this.$router.push('/about') 
       }
   }
+
 }
 </script>
 
@@ -64,9 +74,12 @@ export default {
 #login {
     padding: 50px;
     margin-left: 700px;
-    margin-right: 700px;
-    
-    
+    margin-right: 700px;  
+}
+
+#success {
+  color: lightgreen;
+  font-weight: bold;
 }
 
 
