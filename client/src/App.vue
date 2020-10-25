@@ -11,15 +11,35 @@
 <script>
 
 import Nav from './components/Nav.vue';
-export default {
 
+export default {
+  name: 'App',
   data() {
-    return {authenticated: false}
+            return {
+                authenticated: false,
+                users: {
+                    username: "admin",
+                    password: "password"
+                }
+            }
   },
   components: {
     Nav
-  }
 
+  },
+  mounted() {
+            if(!this.authenticated) {
+                this.$router.replace({ name: "login" });
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            }
+        }
 }
 
 </script>

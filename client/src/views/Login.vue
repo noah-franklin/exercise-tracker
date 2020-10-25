@@ -39,7 +39,8 @@
     </button>
   </p>
   </div>
-  <p id="success" v-if="$authenticated">Login Successful</p>
+  <p id="success" v-if="this.$store.state.authenticated">Login Successful</p>
+  
   </div>
   
 
@@ -51,21 +52,31 @@
 
 
 export default {
- 
+  name: 'Login',
   methods: {
       
       login() {
-       console.log(this.$store.state.users.username)
-       console.log(this.$store.state.users.password)
-       const { username, password } = this
-        if (username == this.$store.state.users.username && password == this.$store.state.users.password)
-         // console.log(this.authenticated)
-         
-          console.log('SUCCESS')
-          this.$router.push('/about') 
+        console.log(this.$store.state.users.username)
+        console.log(this.$store.state.users.password)
+        console.log(this.$store.state.authenticated)
+        const { username, password } = this
+        console.log(username)
+        console.log(password)
+        if (username == this.$store.state.users.username && password == this.$store.state.users.password) {
+          // console.log(this.authenticated)
+            this.$store.commit('changeAuth',true)
+           
+            console.log(this.$store.state.authenticated)
+            console.log('SUCCESS')
+            this.$router.push('/about') 
+        }
+        else {
+          console.log("wrong username or  password")
+        }
       }
-  }
 
+  }
+  
 }
 </script>
 

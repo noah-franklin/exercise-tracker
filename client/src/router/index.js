@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-
+//import store from '../store/index.js'
 const routes = [
   {
     path: '/',
@@ -22,16 +22,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   }
 ]
-
-/*function authGuard(to, from, next) {
-  
- /* if (this.authenticated)  {
+/*
+function authGuard(to, from, next) {
+ 
+  if ()  {
     next();
   }
   else {
     next('/login')
-  }*/
-
+  }
+}*/
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
