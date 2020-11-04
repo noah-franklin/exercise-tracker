@@ -62,6 +62,7 @@ export default {
         const { username, password } = this
         console.log(username)
         console.log(password)
+        
         if (username == this.$store.state.users.username && password == this.$store.state.users.password) {
           // console.log(this.authenticated)
             this.$store.commit('changeAuth',true)
@@ -83,9 +84,9 @@ export default {
 <style>
 
 #login {
-    padding: 50px;
-    margin-left: 700px;
-    margin-right: 700px;  
+    margin-top: 20%;
+    margin-left: 33%;
+    margin-right: 33%;  
 }
 
 #success {

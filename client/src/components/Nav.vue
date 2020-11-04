@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
       <div id="brand" class="navbar-item">
           Excersie App Tracker
@@ -49,12 +49,11 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
-          
-          <a class="button is-danger" type="submit">
+       
+          <a class="button is-light">
             <router-link to="/login">Log in</router-link>
           </a>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -70,7 +69,7 @@ export default {
 
 <style>
 #brand {
-    color:palevioletred;
+    color:orangered;
     font-weight: bold
 }
 </style>
