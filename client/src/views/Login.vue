@@ -10,12 +10,8 @@
     <span class="icon is-small is-right">
       <i class="fas fa-check"></i>
     </span>
-  </p>
+  </p> 
 </div>
-
-
-
-
 
 <div class="field">
   <p class="control has-icons-left has-icons-right">
