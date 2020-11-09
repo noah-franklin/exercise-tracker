@@ -33,7 +33,8 @@ export default {
 
 #nav {
   
-  margin-right: 1%
+  margin-right: 1%;
+  
   
 }
 </style>

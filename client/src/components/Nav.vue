@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
+  <nav style="border-width: 2px; border-style: solid; border-color: black black #3273dc black" class="navbar is-fixed-top is-black" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
       <div id="brand" class="navbar-item">
           Excersie App Tracker
@@ -16,16 +16,16 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        <router-link to="/">Home</router-link>
+      <a style="color: #3273dc" href="/" class="navbar-item">
+        Home
       </a>
 
-      <a class="navbar-item">
-        <router-link to="/about">About</router-link>
+     <a style="color: #3273dc" href="/about" class="navbar-item">
+        About
       </a>
 
       <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+        <a class="navbar-link" style="color: #3273dc">
           More
         </a>
 
@@ -49,10 +49,8 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-       
-          <a class="button is-light">
-            <router-link to="/login">Log in</router-link>
-          </a>
+       <button style="color: #3273dc" class="button" onclick="document.location='/about'">Signup</button>
+       <button style="background-color: #3273dc; border-color: #3273dc; color: white;" class="button" onclick="document.location='/login'">Login</button>
         
       </div>
     </div>
@@ -67,9 +65,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+
 #brand {
-    color:orangered;
+  
     font-weight: bold
 }
 </style>

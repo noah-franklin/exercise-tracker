@@ -30,12 +30,14 @@
 
 <div class="field">
   <p class="control">
-    <button class="button is-danger" @click="login" >
+    <button style="background-color: #3273dc" class="button is-dark" @click="login" >
       Login
     </button>
   </p>
   </div>
+  <!--
   <p id="success" v-if="this.$store.state.authenticated">Login Successful</p>
+  -->
   
   </div>
   
@@ -50,27 +52,7 @@
 export default {
   name: 'Login',
   methods: {
-      
-      login() {
-        console.log(this.$store.state.users.username)
-        console.log(this.$store.state.users.password)
-        console.log(this.$store.state.authenticated)
-        const { username, password } = this
-        console.log(username)
-        console.log(password)
-        
-        if (username == this.$store.state.users.username && password == this.$store.state.users.password) {
-          // console.log(this.authenticated)
-            this.$store.commit('changeAuth',true)
-           
-            console.log(this.$store.state.authenticated)
-            console.log('SUCCESS')
-            this.$router.push('/about') 
-        }
-        else {
-          console.log("wrong username or  password")
-        }
-      }
+ 
 
   }
   
@@ -89,6 +71,5 @@ export default {
   color: lightgreen;
   font-weight: bold;
 }
-
 
 </style>
