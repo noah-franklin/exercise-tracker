@@ -1,3 +1,5 @@
+
+
 <template>
     <div id="login">
     
@@ -30,7 +32,7 @@
 
 <div class="field">
   <p class="control">
-    <button style="background-color: #3273dc" class="button is-dark" @click="login" >
+    <button style="background-color: #3273dc;"  class="button is-dark" @click="login" >
       Login
     </button>
   </p>
@@ -48,12 +50,21 @@
 
 <script>
 
-
 export default {
   name: 'Login',
+  props: [
+      'auth'
+  ],
+  data() {
+      return {
+        authLogin: this.auth
+      }
+  },
   methods: {
- 
-
+    login() {
+      this.authLogin = true;
+      
+    }
   }
   
 }
@@ -61,11 +72,7 @@ export default {
 
 <style>
 
-#login {
-    margin-top: 20%;
-    margin-left: 33%;
-    margin-right: 33%;  
-}
+
 
 #success {
   color: lightgreen;

@@ -49,8 +49,9 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-       <button style="color: #3273dc" class="button" onclick="document.location='/about'">Signup</button>
-       <button style="background-color: #3273dc; border-color: #3273dc; color: white;" class="button" onclick="document.location='/login'">Login</button>
+       <button id="signup" style="color: #3273dc;" class="button" onclick="document.location='/about'">Signup</button>
+       <button id="login" v:if="checkAuth" class="button" onclick="document.location='/login'"> {{ authNav }} Login</button>
+       
         
       </div>
     </div>
@@ -59,14 +60,41 @@
 </template>
 
 <script>
+
+/*var x = document.getElementById("signup");
+var y = document.getElementById("login");
+var auth = false;
+function login() {
+  if (auth)
+}*/
+
 export default {
-    name: 'Nav'
+    name: 'Nav',
+    props: [
+      'auth'
+    ],
+    data() {
+      return {
+        authNav: this.auth
+      }
+    },
+    computed: {
+      checkAuth() {
+        return this.authNav
+      }
+    }
    
 }
+
 </script>
 
 <style scoped>
 
+#login {
+  background-color: #3273dc; 
+  border-color: #3273dc; 
+  color: white;
+}
 
 #brand {
   

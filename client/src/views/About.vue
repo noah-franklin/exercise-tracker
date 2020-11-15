@@ -5,7 +5,7 @@
       <li>
         All Users:
       </li>
-      <li v-for="user in testing" :key="user.id">
+      <li style="color: white" v-for="user in testing" :key="user.id">
          Name: {{ user.first_name }} {{ user.last_name}} 
       </li>
     </ul>
@@ -27,7 +27,7 @@ export default {
   },
   mounted () {
     axios
-      .get('http://localhost:8000/about')
+      .get('localhost:8000/about')
       .then(response => (this.testing = response.data))
   }
 
@@ -38,7 +38,5 @@ export default {
 </script>
 
 <style>
-#about {
-  margin-top: 5em;
-}
+
 </style>
