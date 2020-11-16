@@ -4,7 +4,7 @@ const db = require('../services/db.js');
 const controller = require('../controllers/users.js')
 /* GET users listing. */
 router.get('/', controller.getAll);
-
+router.get('/:id', controller.getUserByID;
 router.post('/', function(req, res, next) {
   // let username = req.body.username;
   // let password = req.body.password;
