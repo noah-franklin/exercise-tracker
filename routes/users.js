@@ -12,8 +12,8 @@ router.post('/', function(req, res, next) {
   // let lastname = req.body.last_name;
   // let isAdmin = req.body.is_admin;
  
-  console.log(req.body)
-  res.send(req.body.username);
+  // console.log(req.body)
+  // res.send(req.body.username);
   // var sql = `INSERT INTO users (username, password, first_name, last_name, is_admin) 
   // VALUES('${username}', '${password}', '${firstname}', '${lastname}', ${isAdmin})`;
   // VALUES('billly','bob', 'billy', 'bob', 0)`;
