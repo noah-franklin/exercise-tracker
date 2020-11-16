@@ -1,15 +1,16 @@
-const mysql = require('mysql');
+
 const express = require('express');
-var cors = require('cors');
-const path = require('path')
+const cors = require('cors');
 const users = require('./routes/users')
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const app = express();
+//const bodyParser = require('body-parser')
 require('dotenv').config();
+
+const app = express();
+
 
 app.use(express.json());
 app.use(cors());
+
 app.use('/users', users);
 
 
