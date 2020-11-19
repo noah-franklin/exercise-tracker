@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/users.js');
+const models = require('../models/users.js');
 
 
 //FULL CRUD
-router.get('/', controller.getAll);
-router.get('/:id', controller.getUserByID)
-router.post('/register', controller.addUser);
-router.post('/:id/delete', controller.deleteUser)
-router.post('/:id/update', controller.updateUser)
+router.get('/', models.getAll);
+router.get('/:id', models.getUserByID)
+router.post('/register', models.addUser);
+router.post('/:id/delete', models.deleteUser)
+router.post('/:id/update', models.updateUser)
 
 module.exports = router;
