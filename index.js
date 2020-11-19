@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const users = require('./routes/users')
+const register = require('./routes/register')
 const index = require('./routes/index')
 //const bodyParser = require('body-parser')
 require('dotenv').config();
@@ -11,6 +12,7 @@ app.use(cors());
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/register', register)
 
 
 const port = process.env.PORT || 3000;
