@@ -1,22 +1,22 @@
 <template>
   <form name="regForm">
-      <label>Username</label>
-      <input type="text" name="firstname" placeholder="username">
-      <br>
+     <!--  <label>Username</label>
+      <input v-model="firstname" type="text" name="firstname" placeholder="username">
+      <br>-->
       <label>Password</label>
-      <input type="password">
+      <input v-model="Password" type="password">
       <br>
       <label>First Name</label>
-      <input type="text">
+      <input v-model="FirstName" type="text">
       <br>
       <label>Last Name</label>
-      <input type="text">
+      <input v-model="LastName" type="text">
       <br>
-      <label>Admin 1 || 0</label>
-      <input type="number">
+      <label>DOB</label>
+      <input v-model="DOB" type="date">
       <br>
-      <button @click="register">Submit</button>
-      <div>{{ test }}</div>
+      <button @click.prevent="register">Submit</button>
+      
   </form>
  
 </template>
@@ -27,30 +27,28 @@ const axios = require('axios')
 // let username = {{ username }}
 export default {
     data() {
-        return {
-            test: null
+        return {      
+            Password: "",
+            FirstName: null,
+            LastName: null,
+            DOB: null,
         }
     },
     methods: {
         
-        async register() {
-            console.log("wtf")
-            //await axios.get('http://localhost:8080/users').then(resp => console.log(resp.data))
-            axios.post('http://localhost:8080/users',
-            {
-                username: 'joe',
-                password: 'bingo',
-                first_name: 'lol',
-                last_name: 'ydsdsa',
-                is_admin: 0
-            })
+        register() {
+            const user = {
+                created_at: new Date(),
+                FirstName: this.FirstName,
+                LastName: this.LastName,
+                Password: this.Password,
+                DOB: this.DOB,
+                User_Type: 1    
+            }
+            console.log(user)
+            await axios.post('http://localhost:3000/register')
         }
-    },
-    mounted () {
-    axios
-      .get('http://localhost:8080/users')
-      .then(response => (this.test = response.data))
-  }
+    }
 }
 </script>
 

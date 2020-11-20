@@ -2,7 +2,7 @@
   <div id="app">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <Nav :auth=false></Nav>
-    <p style="margin-top: 5em">{{ auth }}</p>
+
       <router-view style="margin-top: 5em"/>
   </div>
 
@@ -34,13 +34,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  
-  
-  
-  
 }
 
 </style>

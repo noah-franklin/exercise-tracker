@@ -49,8 +49,8 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-       <button id="signup" style="color: #3273dc;" class="button" onclick="document.location='/about'">Signup</button>
-       <button id="login" v:if="checkAuth" class="button" onclick="document.location='/login'"> {{ authNav }} Login</button>
+       <button id="signupNav" style="color: #3273dc;" class="button" onclick="document.location='/about'">Signup</button>
+       <button id="loginNav" v:if="checkAuth" class="button" onclick="document.location='/login'">Login</button>
        
         
       </div>
@@ -60,13 +60,31 @@
 </template>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
 
-/*var x = document.getElementById("signup");
-var y = document.getElementById("login");
-var auth = false;
-function login() {
-  if (auth)
-}*/
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
+});
 
 export default {
     name: 'Nav',
@@ -83,14 +101,14 @@ export default {
         return this.authNav
       }
     }
-   
+    
 }
 
 </script>
 
 <style scoped>
 
-#login {
+#loginNav {
   background-color: #3273dc; 
   border-color: #3273dc; 
   color: white;

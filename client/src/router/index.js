@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from '../views/Register'
+import Admin from '../views/Admin'
 const routes = [
   {
     path: '/',
@@ -16,6 +17,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
    // beforeEnter: authGuard
    
+  },
+  {
+    path:'/admin',
+    name: 'Admin',
+    component: Admin
   },
   {
     path:'/login',

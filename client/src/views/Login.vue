@@ -58,6 +58,7 @@ export default {
   data() {
       return {
         authLogin: this.auth
+        
       }
   },
   methods: {
@@ -71,7 +72,16 @@ export default {
 </script>
 
 <style>
-
+#login {
+    margin: auto;
+    width: 25%;
+  }
+@media only screen and (max-width: 700px) {
+  #login {
+    margin: auto;
+    width: 100%;
+  }
+}
 
 
 #success {
