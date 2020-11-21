@@ -49,7 +49,7 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-       <button id="signupNav" style="color: #3273dc;" class="button" onclick="document.location='/about'">Signup</button>
+       <button id="signupNav" style="color: #3273dc;" class="button" onclick="document.location='/register'">Signup</button>
        <button id="loginNav" v:if="checkAuth" class="button" onclick="document.location='/login'">Login</button>
        
         

@@ -1,5 +1,5 @@
 <template>
-  <form name="regForm">
+  <form class="control" name="regForm">
      <!--  <label>Username</label>
       <input v-model="firstname" type="text" name="firstname" placeholder="username">
       <br>-->
@@ -15,7 +15,7 @@
       <label>DOB</label>
       <input v-model="DOB" type="date">
       <br>
-      <button @click.prevent="register">Submit</button>
+      <button @click.prevent="register">Register</button>
       
   </form>
  
@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         
-        register() {
+        async register() {
             const user = {
                 created_at: new Date(),
                 FirstName: this.FirstName,
@@ -46,7 +46,7 @@ export default {
                 User_Type: 1    
             }
             console.log(user)
-            await axios.post('http://localhost:3000/register')
+            await axios.post('http://localhost:3000/register', user)
         }
     }
 }
