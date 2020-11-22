@@ -1,8 +1,8 @@
 <template>
   <form class="control" name="regForm">
-     <!--  <label>Username</label>
-      <input v-model="firstname" type="text" name="firstname" placeholder="username">
-      <br>-->
+       <label>Username</label>
+      <input v-model="Username" type="text">
+      <br>
       <label>Password</label>
       <input v-model="Password" type="password">
       <br>
@@ -28,6 +28,7 @@ const axios = require('axios')
 export default {
     data() {
         return {      
+            Username: "",
             Password: "",
             FirstName: null,
             LastName: null,
@@ -39,6 +40,7 @@ export default {
         async register() {
             const user = {
                 created_at: new Date(),
+                Username: this.Username,
                 FirstName: this.FirstName,
                 LastName: this.LastName,
                 Password: this.Password,

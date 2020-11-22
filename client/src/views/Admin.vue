@@ -7,6 +7,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Username</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th><abbr title="Date of Birth">DOB</abbr></th>
@@ -19,6 +20,7 @@
                 <tbody>
                     <tr v-for="user in users" :key="user.id">
                         <td>{{user.id}}</td>
+                        <td>{{user.Username}}</td>
                         <td>{{user.FirstName}}</td>
                         <td>{{user.LastName}}</td>
                         <td>{{user.DOB}}</td>

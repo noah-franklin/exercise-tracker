@@ -37,6 +37,7 @@
     </button>
   </p>
   </div>
+  <p>{{ count }}</p>
   <!--
   <p id="success" v-if="this.$store.state.authenticated">Login Successful</p>
   -->
@@ -49,7 +50,7 @@
 </template>
 
 <script>
-
+const axios = require('axios')
 export default {
   name: 'Login',
   props: [
@@ -57,14 +58,31 @@ export default {
   ],
   data() {
       return {
-        authLogin: this.auth
+        authLogin: this.auth,
+        username: "",
+        password: ""
         
       }
   },
   methods: {
-    login() {
-      this.authLogin = true;
+    async login() {
+      const user = {
+        Username: this.username,
+        Password: this.password
+      }
+      const response = await axios.post('http://localhost:3000/login', user)
+      console.log(response)
+      this.$store.commit('login',response.data.user, response.data.token)
+      this.$router.push('/')
+
+
       
+    }
+  },
+  computed: {
+    count() {
+      
+      return this.$store.state.loggedIn
     }
   }
   

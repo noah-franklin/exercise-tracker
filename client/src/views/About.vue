@@ -15,7 +15,7 @@
 
 <script>
 
-import axios from 'axios';
+//import axios from 'axios';
 
 console.log('hiiiii');
 export default {
@@ -26,9 +26,9 @@ export default {
     
   },
   mounted () {
-    axios
-      .get('localhost:8000/about')
-      .then(response => (this.testing = response.data))
+    // axios
+    //   .get('localhost:8000/about')
+    //   .then(response => (this.testing = response.data))
   }
 
   }

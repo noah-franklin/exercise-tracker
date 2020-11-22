@@ -16,11 +16,11 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a style="color: #3273dc" href="/" class="navbar-item">
+      <a style="color: #3273dc" @click="this.$router.push('/')" class="navbar-item">
         Home
       </a>
 
-     <a style="color: #3273dc" href="/about" class="navbar-item">
+     <a style="color: #3273dc" @click="this.$router.push('/about')" class="navbar-item">
         About
       </a>
 
@@ -49,9 +49,11 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-       <button id="signupNav" style="color: #3273dc;" class="button" onclick="document.location='/register'">Signup</button>
-       <button id="loginNav" v:if="checkAuth" class="button" onclick="document.location='/login'">Login</button>
-       
+       <button id="signupNav" v-if="!this.$store.state.loggedIn" style="color: #3273dc;" class="button" @click="this.$router.push('register')">Signup</button>
+       <button id="loginNav" v-if="!this.$store.state.loggedIn" class="button" @click="this.$router.push('login')">Login</button>
+       <div v-if="this.$store.state.loggedIn">
+        Welcome {{this.$store.state.user[0].FirstName}} {{this.$store.state.user[0].LastName}}
+       </div>
         
       </div>
     </div>
@@ -87,18 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export default {
+    
     name: 'Nav',
-    props: [
-      'auth'
-    ],
     data() {
       return {
-        authNav: this.auth
-      }
-    },
-    computed: {
-      checkAuth() {
-        return this.authNav
+        Username: this.$store.state.user
       }
     }
     

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <Nav :auth=false></Nav>
+    <Nav></Nav>
 
       <router-view style="margin-top: 5em"/>
   </div>
@@ -16,12 +16,8 @@ export default {
   name: 'App',
   components: {
     Nav
-  },
-  data() {
-    return {
-      auth: false
-    }
   }
+  
 }
 
 
