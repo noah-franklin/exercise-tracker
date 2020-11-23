@@ -13,6 +13,8 @@
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "vue": "^3.0.0",
+    "vue-cookie-next": "^1.0.3",
+    "vue-cookies": "^1.7.4",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-rc.1"
   },

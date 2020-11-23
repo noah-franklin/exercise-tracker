@@ -73,7 +73,12 @@ export default {
       const response = await axios.post('http://localhost:3000/login', user)
       console.log(response)
       this.$store.commit('login',response.data.user, response.data.token)
+      this.$cookie.setCookie('user', response.data.user[0])
+      this.$cookie.setCookie('token', response.data.token)
       this.$router.push('/')
+      const cookie = this.$cookie.getCookie('user')
+      
+      this.$store.commit('login', cookie)
 
 
       

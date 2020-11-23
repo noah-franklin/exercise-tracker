@@ -52,8 +52,9 @@
        <button id="signupNav" v-if="!this.$store.state.loggedIn" style="color: #3273dc;" class="button" @click="this.$router.push('register')">Signup</button>
        <button id="loginNav" v-if="!this.$store.state.loggedIn" class="button" @click="this.$router.push('login')">Login</button>
        <div v-if="this.$store.state.loggedIn">
-        Welcome {{this.$store.state.user[0].FirstName}} {{this.$store.state.user[0].LastName}}
+        Welcome {{getUser.FirstName}} {{getUser.LastName}}
        </div>
+       <button id="logoutNav" v-if="this.$store.state.loggedIn" class="button" @click="logout">Logout</button>
         
       </div>
     </div>
@@ -95,6 +96,19 @@ export default {
       return {
         Username: this.$store.state.user
       }
+    },
+    computed: {
+      getUser() {
+        return this.$store.state.user
+      }
+      
+    },
+    methods: {
+        logout() {
+          this.$cookie.removeCookie("user")
+          this.$cookie.removeCookie("token")
+          this.$store.commit('logout')
+        }
     }
     
 }
@@ -108,7 +122,9 @@ export default {
   border-color: #3273dc; 
   color: white;
 }
-
+#logoutNav {
+  margin-left: 5px;
+}
 #brand {
   
     font-weight: bold

@@ -16,6 +16,14 @@ export default {
   name: 'App',
   components: {
     Nav
+  },
+  beforeMount() {
+    console.log(this.$cookie.getCookie('user'))
+    if(this.$cookie.getCookie('user') !== null){
+      const user = this.$cookie.getCookie('user')
+      const token = this.$cookie.getCookie('token')
+      this.$store.commit('login', user, token)
+    }
   }
   
 }

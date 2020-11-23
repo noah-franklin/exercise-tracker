@@ -12,6 +12,11 @@ const store = createStore({
       state.user = user
       state.token = token
       state.loggedIn = true;
+    },
+    logout (state) {
+        state.user = {},
+        state.token = ''
+        state.loggedIn = false;
     }
   },
   getters: {
