@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <Nav></Nav>
 
-      <router-view style="margin-top: 5em"/>
+      <router-view style="margin: auto; margin-top: 5em"/>
   </div>
 
 </template>

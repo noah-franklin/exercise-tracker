@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="tableheader">User List</h1>
+        <!--<h1 class="tableheader">User List</h1>-->
         <div class="table-container">
             
             <table class="table is-striped is-narrow usertable">
@@ -13,8 +13,10 @@
                         <th><abbr title="Date of Birth">DOB</abbr></th>
                         <!--<th>Password</th>-->
                         <th>User Type 1(Admin) 2(User)</th>  
-                        <th><abbr title="Created at">C</abbr></th>
-                        <th><abbr title="Updated at">U</abbr></th>
+                        <th>Created</th>
+                        <th>Updated</th>
+                        <th></th>
+                        <th></th>
                         
                     </tr>
                 </thead>
@@ -29,7 +31,7 @@
                         <td>{{user.User_Type}}</td>
                         <td>{{user.created_at}}</td>
                         <td>{{user.update_at}}</td>
-                        <td><button class="button is-info" @click="editUser(user.id)">Edit User Type</button></td>
+                        <td><button class="button is-info" @click="editUser(user.id)">Edit</button></td>
                         <td><button class="button is-danger" @click="deleteUser(user.id)">Delete</button></td>
                     </tr>
                 </tbody>
@@ -118,6 +120,7 @@ export default {
             })
             document.getElementById("edit").classList.toggle('is-active');
             this.users = axios.get(process.env.VUE_APP_APIURL+'/users').then(resp => this.users = resp.data)
+            this.$forceUpdate()
 
         },
         deleteNow() {
@@ -130,6 +133,8 @@ export default {
             })
             document.getElementById("delete").classList.toggle('is-active');
             this.users = axios.get(process.env.VUE_APP_APIURL+'/users').then(resp => this.users = resp.data)
+            this.$forceUpdate()
+            
         }
     }
 }

@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from '../views/Register'
 import Admin from '../views/Admin'
-//import store from '../store' // your vuex store 
+import store from '../store' // your vuex store 
 const routes = [
   {
     path: '/',
@@ -23,7 +23,19 @@ const routes = [
     path:'/admin',
     name: 'Admin',
     component: Admin,
-    beforeEnter: authCheck
+    beforeEnter: (to, from, next) => {
+      
+      if (store.state.loggedIn) {
+        if(store.state.user.User_Type == 1)
+          next()
+          else {
+            next({name: 'Home'})
+          }
+      }
+      else {
+        next({name: 'Login'})
+      } 
+    }
   },
   {
     path:'/login',
@@ -44,17 +56,17 @@ const routes = [
 //                 }
 //             })
 // }
-const authCheck = (to, from, next) => {
-  console.log("Wtf")
-  console.log("Login Status:" + this.$store.state.loggedIn)
+// const authCheck = (to, from, next) => {
+//   console.log("Wtf")
+//   console.log("Login Status:" + this.$store.state.loggedIn)
 
-  if (this.$store.state.loggedIn) {
-       next()
-  }
-  else {
-    next()
-  } 
-}
+//   if (this.$store.state.loggedIn) {
+//        next()
+//   }
+//   else {
+//     next({name: 'Login'})
+//   } 
+// }
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

@@ -96,7 +96,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #login {
     margin: auto;
     width: 25%;
