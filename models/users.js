@@ -1,12 +1,22 @@
 const db = require('../services/db.js');
 const prefix = "EX_Fall_2020_"
-
+var jwt = require('jsonwebtoken');
 module.exports = {
     getAll: (req, res) => {
         db.query(`SELECT * FROM ${prefix}Users`, function (err, results, fields) {
             if (err) throw err
             res.send(results)
         });
+    },
+    checkAdmin: (req, res) => {
+        let token = req.headers.authorization.split(' ')
+        
+        let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
+        decoded = JSON.parse(decoded.data)
+        
+        if(decoded[0].User_Type == 1){
+            res.send('Admin')
+        }
     },
     getUserByID: (req, res) => {
         db.query(`SELECT * FROM ${prefix}Users WHERE id=${req.params.id}`, function (err, results, fields) {
@@ -24,21 +34,39 @@ module.exports = {
 
     },
     deleteUser: (req, res) => { 
-        db.query(`DELETE FROM ${prefix}Users WHERE id = ${req.params.id} AND Password = '${req.body.Password}'`,
-        (err, results, fields) => {
-            if (err) throw err
-            res.send("Deleted User")
-        })
+        console.log(req.params.id)
+        //console.log(req.headers.authorization)
+        let token = req.headers.authorization.split(' ')
+        console.log(token[1])
+        let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
+        decoded = JSON.parse(decoded.data)
+        console.log(decoded[0].User_Type)
+        res.send("found me lol")
+        if(decoded[0].User_Type == 1){
+            console.log('wtf')
+            db.query(`DELETE FROM ${prefix}Users WHERE id = ${req.params.id}`,
+            (err, results, fields) => {
+                if (err) throw err
+               
+            })
+        }
        
     },
     updateUser: (req, res) => {
-        db.query(`UPDATE ${prefix}Users 
-        SET created_at = '${req.body.created_at}', FirstName = '${req.body.FirstName}', LastName = '${req.body.LastName}', DOB = '${req.body.DOB}', Password = '${req.body.Password}', User_Type = '${req.body.User_Type}'
-        WHERE id = ${req.params.id} AND Password = '${req.body.OldPassword}'`,
-        (err, results, fields) => {
-            if (err) throw err
-            res.send("Updated User")
-        })
+        let token = req.headers.authorization.split(' ')
+        
+        let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
+        decoded = JSON.parse(decoded.data)
+        
+        if(decoded[0].User_Type == 1){
+            db.query(`UPDATE ${prefix}Users 
+            SET User_Type = '${req.body.User_Type}'
+            WHERE id = ${req.params.id}`,
+            (err, results, fields) => {
+                if (err) throw err
+                
+            })
+        }
     }
 
     }
