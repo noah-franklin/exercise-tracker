@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from '../views/Register'
 import Admin from '../views/Admin'
+//import store from '../store' // your vuex store 
 const routes = [
   {
     path: '/',
@@ -21,7 +22,8 @@ const routes = [
   {
     path:'/admin',
     name: 'Admin',
-    component: Admin
+    component: Admin,
+    beforeEnter: authCheck
   },
   {
     path:'/login',
@@ -34,7 +36,25 @@ const routes = [
     component: Register
   }
 ]
+//const axios = require('axios')
+// const adminCheck = (to, from, next) => {
+//   axios.get(process.env.VUE_APP_APIURL+"/users/"+this.currentUser.id+'/delete', {
+//                 headers: {
+//                     'Authorization': "Bearer "+ this.token
+//                 }
+//             })
+// }
+const authCheck = (to, from, next) => {
+  console.log("Wtf")
+  console.log("Login Status:" + this.$store.state.loggedIn)
 
+  if (this.$store.state.loggedIn) {
+       next()
+  }
+  else {
+    next()
+  } 
+}
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

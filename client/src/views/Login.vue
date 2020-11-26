@@ -70,10 +70,12 @@ export default {
         Username: this.username,
         Password: this.password
       }
-      const response = await axios.post('http://localhost:3000/login', user)
+      const response = await axios.post(process.env.VUE_APP_APIURL + '/login', user)
       console.log(response)
-      this.$store.commit('login',response.data.user, response.data.token)
+      this.$store.commit('login',response.data.user)
+      this.$store.commit('changeToken',response.data.token)
       this.$cookie.setCookie('user', response.data.user[0])
+      console.log(response.data.user[0])
       this.$cookie.setCookie('token', response.data.token)
       this.$router.push('/')
       const cookie = this.$cookie.getCookie('user')

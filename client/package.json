@@ -12,6 +12,7 @@
     "bulma": "^0.9.1",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "vue": "^3.0.0",
     "vue-cookie-next": "^1.0.3",
     "vue-cookies": "^1.7.4",

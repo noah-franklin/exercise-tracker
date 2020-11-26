@@ -7,12 +7,15 @@ const store = createStore({
     loggedIn: false
   },
   mutations: {
-    login (state, user, token) {
+    login (state, user) {
       // mutate state
-      state.user = user
-      state.token = token
+      state.user = user;
       state.loggedIn = true;
     },
+    changeToken(state, token) {
+        state.token = token;
+    },
+    
     logout (state) {
         state.user = {},
         state.token = ''
@@ -23,7 +26,14 @@ const store = createStore({
       getUsername(state) {
           return state.user.Username;
           
+      },
+      getToken(state) {
+          return state.token;
+      },
+      getLoginStatus(state) {
+          return state.loggedIn;
       }
+      
   }
 })
 

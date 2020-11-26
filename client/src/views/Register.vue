@@ -44,11 +44,10 @@ export default {
                 FirstName: this.FirstName,
                 LastName: this.LastName,
                 Password: this.Password,
-                DOB: this.DOB,
-                User_Type: 1    
+                DOB: this.DOB  
             }
             console.log(user)
-            await axios.post('http://localhost:3000/register', user)
+            await axios.post(process.env.VUE_APP_APIURL+'/register', user)
         }
     }
 }
