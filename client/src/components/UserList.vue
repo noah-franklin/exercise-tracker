@@ -37,6 +37,7 @@
                 </tbody>
 
             </table>
+            
             <div class="modal" id="edit">
                 <div class="modal-background"></div>
                 <div class="modal-content">
@@ -44,7 +45,7 @@
                         <label>User Type: </label>
                         <input v-model="User_Type" type="text" placeholder="1 (Admin), 2 (User)">
                           <div style="color: white">Current Role: {{currentUser.User_Type}} 
-                        <button  @click.prevent="editNow">Submit</button>
+                        <button  @click="editNow">Submit</button>
                         </div>
                         
                     </form>
@@ -58,12 +59,14 @@
                     <div style="color: white">Are you sure you want to delete {{currentUser.Username}} ?
                         
                     </div>
-                    <button class="button is-danger" @click.prevent="deleteNow">Yes</button>
+                    <button class="button is-danger" @click="deleteNow">Yes</button>
                     
                 </div>
                 <button @click="deleteUser" class="modal-close is-large" aria-label="close"></button>
             </div>
+            
         </div>
+        
     </div>
 </template>
 

@@ -19,7 +19,9 @@
       <a style="color: #3273dc" @click="this.$router.push('/')" class="navbar-item">
         Home
       </a>
-
+      <a v-if="this.$store.state.loggedIn" style="color: #3273dc" @click="this.$router.push('/feed')" class="navbar-item">
+        Feed
+      </a>
      <a v-if="this.$store.state.user.User_Type == 1" style="color: #3273dc" @click="this.$router.push('/admin')" class="navbar-item">
         Admin
       </a>

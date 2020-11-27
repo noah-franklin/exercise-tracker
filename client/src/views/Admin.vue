@@ -15,6 +15,7 @@
         </div>
         <div class="column">
         <UserList v-if="checkerUser"></UserList>
+        <ExerciseList v-if="checkerExercise"></ExerciseList>
         </div>
         
     </div>
@@ -23,11 +24,12 @@
 <script>
 
 import UserList from '../components/UserList.vue'
-
+import ExerciseList from '../components/ExerciseList.vue'
 export default {
     name: 'Admin',
     components: {
-        UserList
+        UserList,
+        ExerciseList
     },
     data() {
         return {
