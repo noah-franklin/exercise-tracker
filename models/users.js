@@ -8,16 +8,6 @@ module.exports = {
             res.send(results)
         });
     },
-    checkAdmin: (req, res) => {
-        let token = req.headers.authorization.split(' ')
-        
-        let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
-        decoded = JSON.parse(decoded.data)
-        
-        if(decoded[0].User_Type == 1){
-            res.send('Admin')
-        }
-    },
     getUserByID: (req, res) => {
         db.query(`SELECT * FROM ${prefix}Users WHERE id=${req.params.id}`, function (err, results, fields) {
             if (err) throw err

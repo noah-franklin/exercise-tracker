@@ -5,6 +5,7 @@ const users = require('./routes/users')
 const register = require('./routes/register')
 const index = require('./routes/index')
 const login = require('./routes/login')
+const exercise = require('./routes/exercise')
 //const bodyParser = require('body-parser')
 require('dotenv').config();
 const app = express();
@@ -15,7 +16,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/register', register)
 app.use('/login', login)
-
+app.use('/exercises', exercise)
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
