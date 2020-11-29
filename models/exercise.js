@@ -1,12 +1,12 @@
 const db = require('../services/db.js');
 const prefix = "EX_Fall_2020_";
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const auth = require('./auth');
 require('dotenv').config()
 module.exports = {
     getAllExercise: (req,res) => {
        
        db.query(`SELECT * FROM ${prefix}Exercise_Types`, function (err, results, fields) {
+           console.log(results)
             if (err) throw err
             res.send(results)
         });
@@ -14,10 +14,7 @@ module.exports = {
 
     },
     addExercise: (req, res) => {
-        let token = req.headers.authorization.split(' ')
-            //console.log(token[1])
-            let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
-            decoded = JSON.parse(decoded.data)
+        let decoded = auth.verifyToken(req)
         if(decoded[0].User_Type == 1){
             
             //console.log('wtf')
@@ -32,14 +29,7 @@ module.exports = {
 
     },
     deleteExercise: (req, res) => {
-        //console.log(req.params.id)
-        //console.log(req.headers.authorization)
-        let token = req.headers.authorization.split(' ')
-        //console.log(token[1])
-        let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
-        decoded = JSON.parse(decoded.data)
-        //console.log(decoded[0].User_Type)
-        //res.send("found me lol")
+        let decoded = auth.verifyToken(req)
         if(decoded[0].User_Type == 1){
             //console.log('wtf')
             db.query(`DELETE FROM ${prefix}Exercise_Types WHERE id = ${req.params.id}`,
@@ -51,14 +41,7 @@ module.exports = {
 
     },
     editExercise: (req, res) => {
-        //console.log(req.params.id)
-        //console.log(req.headers.authorization)
-        let token = req.headers.authorization.split(' ')
-        //console.log(token[1])
-        let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
-        decoded = JSON.parse(decoded.data)
-        //console.log(decoded[0].User_Type)
-        //res.send("found me lol")
+        let decoded = auth.verifyToken(req)
         if(decoded[0].User_Type == 1){
             //console.log('wtf')
             db.query(`UPDATE ${prefix}Exercise_Types 

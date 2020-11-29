@@ -1,6 +1,6 @@
 const db = require('../services/db.js');
 const prefix = "EX_Fall_2020_"
-var jwt = require('jsonwebtoken');
+const auth = require('./auth');
 module.exports = {
     getAll: (req, res) => {
         db.query(`SELECT * FROM ${prefix}Users`, function (err, results, fields) {
@@ -24,12 +24,7 @@ module.exports = {
 
     },
     deleteUser: (req, res) => { 
-        console.log(req.params.id)
-        //console.log(req.headers.authorization)
-        let token = req.headers.authorization.split(' ')
-        console.log(token[1])
-        let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
-        decoded = JSON.parse(decoded.data)
+        let decoded = auth.verifyToken(req)
         console.log(decoded[0].User_Type)
         res.send("found me lol")
         if(decoded[0].User_Type == 1){
@@ -43,11 +38,7 @@ module.exports = {
        
     },
     updateUser: (req, res) => {
-        let token = req.headers.authorization.split(' ')
-        
-        let decoded = jwt.verify(token[1], process.env.JWT_SECRET);
-        decoded = JSON.parse(decoded.data)
-        
+        let decoded = auth.verifyToken(req)
         if(decoded[0].User_Type == 1){
             db.query(`UPDATE ${prefix}Users 
             SET User_Type = '${req.body.User_Type}'
