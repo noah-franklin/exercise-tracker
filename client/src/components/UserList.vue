@@ -85,14 +85,10 @@ export default {
             User_Type: null
             }
     },
-    // created() {     
+     created() {     
     //     axios.get(process.env.VUE_APP_APIURL+'/users').then(resp => this.users = resp.data)
-    // },
-    computed: {
-        getUserList() {
-            return this.users
-        }
-    },
+        console.log(this.users)
+     },
     methods: {
         editUser(id) {
             document.getElementById("edit").classList.toggle('is-active');

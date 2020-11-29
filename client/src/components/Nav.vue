@@ -25,6 +25,9 @@
      <a v-if="this.$store.state.user.User_Type == 1" style="color: #3273dc" @click="this.$router.push('/admin')" class="navbar-item">
         Admin
       </a>
+      <a v-if="this.$store.state.loggedIn" style="color: #3273dc" @click="this.$router.push('/exercise')" class="navbar-item">
+        Exercise Log
+      </a>
         <!--
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link" style="color: #3273dc">

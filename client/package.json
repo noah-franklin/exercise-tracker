@@ -13,9 +13,11 @@
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "moment": "^2.29.1",
     "vue": "^3.0.0",
     "vue-cookie-next": "^1.0.3",
     "vue-cookies": "^1.7.4",
+    "vue-moment": "^4.1.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-rc.1"
   },
