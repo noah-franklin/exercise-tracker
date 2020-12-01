@@ -5,7 +5,7 @@ const users = require('./routes/users')
 const register = require('./routes/register')
 const index = require('./routes/index')
 const login = require('./routes/login')
-
+const type = require('./routes/type')
 const exercise = require('./routes/exercise')
 const workout = require('./routes/workout')
 //const bodyParser = require('body-parser')
@@ -20,6 +20,7 @@ app.use('/register', register)
 app.use('/login', login)
 app.use('/exercises', exercise)
 app.use('/workout', workout)
+app.use('/types', type)
 
 const port = process.env.PORT || 3000;
 
