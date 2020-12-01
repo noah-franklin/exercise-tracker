@@ -4,7 +4,7 @@ const models = require('../models/type.js');
 
 
 
-router.post('/', models.login);
+router.post('/', models.getAllTypes);
 
 
 module.exports = router;
