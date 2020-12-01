@@ -4,7 +4,8 @@ const store = createStore({
   state: {
     user: {},
     token: '',
-    loggedIn: false
+    loggedIn: false,
+    exerciseLog: {}
   },
   mutations: {
     login (state, user) {

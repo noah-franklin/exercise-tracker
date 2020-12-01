@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Register from '../views/Register'
 import Admin from '../views/Admin'
+import addExercise from '../views/addExercise'
+import Feed from '../views/Feed'
 import store from '../store' // your vuex store 
 const routes = [
   {
@@ -17,6 +19,24 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
    // beforeEnter: authGuard
+   
+  },
+  {
+    path: '/exercise',
+    name: 'addExercise',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: addExercise,
+    beforeEnter: (to, from, next) => {
+      
+      if (store.state.loggedIn) 
+          next()
+
+      else {
+        next({name: 'Login'})
+      } 
+    }
    
   },
   {
@@ -36,6 +56,23 @@ const routes = [
         next({name: 'Login'})
       } 
     }
+  },
+  {
+    path: '/feed',
+    name: 'Feed',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Feed,
+    beforeEnter: (to, from, next) => {
+      
+      if (store.state.loggedIn) {
+          next()
+      
+       next({name: 'Login'})
+      } 
+    }
+   
   },
   {
     path:'/login',

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-
+//deploying
 import Nav from './components/Nav.vue';
 
 export default {
@@ -28,7 +28,7 @@ export default {
       this.$store.commit('changeToken', token)
       
     }
-    console.log("Login status:" + this.$store.state.loggedIn)
+    //console.log("Login status:" + this.$store.state.loggedIn)
   }
   
 }

@@ -2,7 +2,7 @@
 
 <template>
     <div id="login">
-    
+    <form>
     <div class="field">
   <p class="control has-icons-left has-icons-right">
     <input v-model="username" class="input" type="text" placeholder="Username">
@@ -37,11 +37,11 @@
     </button>
   </p>
   </div>
-  <p>{{ count }}</p>
+ 
   <!--
   <p id="success" v-if="this.$store.state.authenticated">Login Successful</p>
   -->
-  
+  </form>
   </div>
   
 
@@ -70,14 +70,17 @@ export default {
         Username: this.username,
         Password: this.password
       }
+      this.$router.push('/')
       const response = await axios.post(process.env.VUE_APP_APIURL + '/login', user)
+      
       console.log(response)
+      
       this.$store.commit('login',response.data.user)
       this.$store.commit('changeToken',response.data.token)
       this.$cookie.setCookie('user', response.data.user[0])
-      console.log(response.data.user[0])
+      //console.log(response.data.user[0])
       this.$cookie.setCookie('token', response.data.token)
-      this.$router.push('/')
+     
       const cookie = this.$cookie.getCookie('user')
       
       this.$store.commit('login', cookie)

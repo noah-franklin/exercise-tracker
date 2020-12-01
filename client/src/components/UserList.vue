@@ -43,9 +43,13 @@
                 <div class="modal-content">
                     <form class="control" name="regForm">
                         <label>User Type: </label>
-                        <input v-model="User_Type" type="text" placeholder="1 (Admin), 2 (User)">
+
+                        <select class="select" v-model="User_Type">
+                            <option v-bind:value="1">Admin</option>
+                            <option v-bind:value="2">User</option>
+                            </select>
                           <div style="color: white">Current Role: {{currentUser.User_Type}} 
-                        <button  @click="editNow">Submit</button>
+                        <button class="button is-info" @click="editNow">Submit</button>
                         </div>
                         
                     </form>
@@ -85,14 +89,10 @@ export default {
             User_Type: null
             }
     },
-    // created() {     
+     created() {     
     //     axios.get(process.env.VUE_APP_APIURL+'/users').then(resp => this.users = resp.data)
-    // },
-    computed: {
-        getUserList() {
-            return this.users
-        }
-    },
+        console.log(this.users)
+     },
     methods: {
         editUser(id) {
             document.getElementById("edit").classList.toggle('is-active');
@@ -116,7 +116,7 @@ export default {
             
         },
         editNow() {
-            axios.post(process.env.VUE_APP_APIURL+"/users/"+this.currentUser.id+'/update', {User_Type: this.User_Type }, {
+            axios.post(process.env.VUE_APP_APIURL+"/users/"+this.currentUser.id+'/update', {User_Type: Number(this.User_Type) }, {
                 headers: {
                     'Authorization': "Bearer "+ this.token
                 }

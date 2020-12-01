@@ -1,6 +1,6 @@
 const db = require('../services/db.js');
 const prefix = "EX_Fall_2020_"
-
+const auth = require('./auth');
 module.exports = {
     getAll: (req, res) => {
         db.query(`SELECT * FROM ${prefix}Users`, function (err, results, fields) {
@@ -14,22 +14,40 @@ module.exports = {
             res.send(results)
         });
     },
-    deleteUser: (req, res) => { 
-        db.query(`DELETE FROM ${prefix}Users WHERE id = ${req.params.id} AND Password = '${req.body.Password}'`,
+    addUser: (req,res) => {
+        db.query(`INSERT INTO ${prefix}Users (created_at, FirstName, LastName, DOB, Password, User_Type) 
+        VALUES ('${req.body.created_at}', '${req.body.FirstName}', '${req.body.LastName}', '${req.body.DOB}', '${req.body.Password}', '${req.body.User_Type}')`, 
         (err, results, fields) => {
             if (err) throw err
-            res.send("Deleted User")
+            res.send("Successfully added users!")
         })
+
+    },
+    deleteUser: (req, res) => { 
+        let decoded = auth.verifyToken(req)
+        console.log(decoded[0].User_Type)
+        res.send("found me lol")
+        if(decoded[0].User_Type == 1){
+            console.log('wtf')
+            db.query(`DELETE FROM ${prefix}Users WHERE id = ${req.params.id}`,
+            (err, results, fields) => {
+                if (err) throw err
+               
+            })
+        }
        
     },
     updateUser: (req, res) => {
-        db.query(`UPDATE ${prefix}Users 
-        SET created_at = '${req.body.created_at}', FirstName = '${req.body.FirstName}', LastName = '${req.body.LastName}', DOB = '${req.body.DOB}', Password = '${req.body.Password}', User_Type = '${req.body.User_Type}'
-        WHERE id = ${req.params.id} AND Password = '${req.body.OldPassword}'`,
-        (err, results, fields) => {
-            if (err) throw err
-            res.send("Updated User")
-        })
+        let decoded = auth.verifyToken(req)
+        if(decoded[0].User_Type == 1){
+            db.query(`UPDATE ${prefix}Users 
+            SET User_Type = '${req.body.User_Type}'
+            WHERE id = ${req.params.id}`,
+            (err, results, fields) => {
+                if (err) throw err
+                
+            })
+        }
     }
 
     }

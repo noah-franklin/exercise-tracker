@@ -1,14 +1,23 @@
 <template>
-    <div>
+<div>
+    <div style="width: 33%" class="container">
         <!--<h1 class="tableheader">User List</h1>-->
-        <label>Exercise Name: </label>
-       <input v-model="ExerciseName" type="text" >
-        <br>
-       <label>Exercise Type: </label>
-       <input v-model="ExerciseType" type="text" placeholder="Cardio">
-       <br>
-        <button @click="addExercise" style="margin-bottom: 1em" class="button is-info">Add Exercise</button>
+        <div style="margin: auto" class="field">
+            <label style="display: flex">Exercise Name: </label>
+        <input style="color: white" class="input" v-model="ExerciseName" type="text" >
         
+        <label  >Exercise Type: </label>
+        <select class="select" v-model="ExerciseType">
+            <option>Aerobic</option>
+            <option>Strength</option>
+            <option>Flexibility</option>
+            <option>Balance</option>
+        </select>
+        <br>
+        <br>
+       </div>
+        <button @click="addExercise" style="margin-bottom: 1em" class="button is-info">Add Exercise</button>
+    </div>
         <div class="table-container">
             
             <table class="table is-striped is-narrow usertable">
@@ -49,13 +58,19 @@
                 <div class="modal-content">
                     <form class="control" name="regForm">
                         <label>Exercise Name: </label>
-                        <input v-model="ExerciseName" type="text" >
+                        <input style="width: 33%" class="input" v-model="ExerciseName" type="text" >
                         <br>
                         <label>Exercise Type: </label>
-                        <input v-model="ExerciseType" type="text" placeholder="Cardio">
+                        
+                        <select class="select" v-model="ExerciseType">
+                            <option>Aerobic</option>
+                            <option>Strength</option>
+                            <option>Flexibility</option>
+                            <option>Balance</option>
+                            </select>
                           <div style="color: white">Current exercise name: {{currentExercise.Name}} <br>Current exercise type: {{currentExercise.Type}}
                             <br>
-                        <button  @click="editNow">Submit</button>
+                        <button class="button is-info" @click="editNow">Submit</button>
                         </div>
                         
                     </form>
@@ -77,6 +92,7 @@
             
         </div>
     </div>
+
 </template>
 
 <script>
