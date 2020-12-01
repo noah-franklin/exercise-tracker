@@ -4,7 +4,7 @@
           <label>Choose Exercise: </label>
       <div class="select">
 
-        <select v-model="selectedType" value="Choose Exercise">
+        <select class="select" v-model="selectedType" value="Choose Exercise">
             <option disabled value=''>Choose Exercise</option>
             
             <option v-for="exercise in exercises" :key="exercise.id">{{exercise.Name}}</option>

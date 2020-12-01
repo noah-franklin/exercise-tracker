@@ -1,5 +1,5 @@
 <template>
-    <div style="width: 33%" class="container">
+    <div style="width: 75%" class="container">
         <div style="margin-bottom: 1EM" class="card" v-for="workout in workouts" :key="workout.id">
 
             <header class="card-header is-centered">

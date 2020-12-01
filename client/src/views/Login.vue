@@ -37,7 +37,7 @@
     </button>
   </p>
   </div>
-  <p>{{ count }}</p>
+ 
   <!--
   <p id="success" v-if="this.$store.state.authenticated">Login Successful</p>
   -->
