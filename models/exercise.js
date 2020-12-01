@@ -5,7 +5,7 @@ require('dotenv').config()
 module.exports = {
     getAllExercise: (req,res) => {
        
-       db.query(`SELECT * FROM ${prefix}Exercise_Types WHERE Type='Aerobic'`, function (err, results, fields) {
+       db.query(`SELECT * FROM ${prefix}Exercise_Types`, function (err, results, fields) {
            console.log(results)
             if (err) throw err
             res.send(results)
