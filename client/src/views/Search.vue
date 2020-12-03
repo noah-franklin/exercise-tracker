@@ -42,6 +42,8 @@ export default {
             },
           }
         );
+      } else {
+        this.response = { data: " " };
       }
       console.log(this.response.data);
     },
