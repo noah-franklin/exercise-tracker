@@ -11,7 +11,7 @@
     "@trevoreyre/autocomplete-js": "^2.2.0",
     "@trevoreyre/autocomplete-vue": "^2.2.0",
     "autocomplete-vue": "^1.1.0",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "buefy": "^0.9.4",
     "bulma": "^0.9.1",
     "core-js": "^3.6.5",
