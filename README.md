@@ -5,3 +5,6 @@ admin account to show admin and adding exercise functionality
 
 username: admin
 password: password
+
+Website: https://exercise-app-client-2020.herokuapp.com
+
